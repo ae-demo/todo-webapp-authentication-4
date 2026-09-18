@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "issue": 7,
+  "commit": "86488aa73e40612eab9d7c03b27631cb7f5a3a9a",
+  "generatedAt": "2026-09-18T07:04:15.002Z",
+  "playwrightVersion": "1.61.1",
+  "batches": [
+    {
+      "file": "2026-09-18T06-48-44-270Z.json",
+      "specs": 1
+    },
+    {
+      "file": "2026-09-18T06-49-02-930Z.json",
+      "specs": 1
+    },
+    {
+      "file": "2026-09-18T06-49-20-113Z.json",
+      "specs": 1
+    },
+    {
+      "file": "2026-09-18T06-49-40-046Z.json",
+      "specs": 1
+    },
+    {
+      "file": "2026-09-18T06-49-59-639Z.json",
+      "specs": 1
+    },
+    {
+      "file": "2026-09-18T06-50-03-763Z.json",
+      "specs": 2
+    },
+    {
+      "file": "2026-09-18T06-50-39-928Z.json",
+      "specs": 2
+    },
+    {
+      "file": "2026-09-18T06-51-23-637Z.json",
+      "specs": 2
+    },
+    {
+      "file": "2026-09-18T06-54-55-511Z.json",
+      "specs": 2
+    },
+    {
+      "file": "2026-09-18T06-55-50-116Z.json",
+      "specs": 2
+    },
+    {
+      "file": "2026-09-18T06-56-47-116Z.json",
+      "specs": 5
+    },
+    {
+      "file": "2026-09-18T06-58-39-908Z.json",
+      "specs": 1
+    },
+    {
+      "file": "2026-09-18T06-59-17-198Z.json",
+      "specs": 2
+    },
+    {
+      "file": "2026-09-18T07-00-23-814Z.json",
+      "specs": 12
+    }
+  ],
+  "totals": {
+    "e2e": {
+      "total": 12,
+      "pass": 11,
+      "fail": 0,
+      "notRun": 1
+    },
+    "manual": 0,
+    "scenario": 0
+  },
+  "criteria": [
+    {
+      "id": "AC-001-a",
+      "requirementId": "REQ-001",
+      "must": "An unauthenticated visitor is directed to sign in before reaching the to-do list",
+      "method": "e2e",
+      "status": "pass",
+      "spec": "tests/e2e/specs/AC-001-a.spec.ts",
+      "healed": false,
+      "healAttempts": 0,
+      "flaky": false,
+      "durationMs": 12645,
+      "failure": null,
+      "batch": "2026-09-18T07-00-23-814Z.json"
+    },
+    {
+      "id": "AC-001-b",
+      "requirementId": "REQ-001",
+      "must": "After signing in, the user lands on their own to-do list",
+      "method": "e2e",
+      "status": "pass",
+      "spec": "tests/e2e/specs/AC-001-b.spec.ts",
+      "healed": false,
+      "healAttempts": 0,
+      "flaky": false,
+      "durationMs": 16324,
+      "failure": null,
+      "batch": "2026-09-18T07-00-23-814Z.json"
+    },
+    {
+      "id": "AC-001-c",
+      "requirementId": "REQ-001",
+      "must": "One user's signed-in session never shows another user's entries",
+      "method": "e2e",
+      "status": "not_run",
+      "spec": "tests/e2e/specs/AC-001-c.spec.ts",
+      "healed": false,
+      "healAttempts": 0,
+      "flaky": false,
+      "durationMs": 0,
+      "failure": null,
+      "batch": "2026-09-18T07-00-23-814Z.json"
+    },
+    {
+      "id": "AC-002-a",
+      "requirementId": "REQ-002",
+      "must": "Submitting a title creates a new entry visible in the user's list",
+      "method": "e2e",
+      "status": "pass",
+      "spec": "tests/e2e/specs/AC-002-a.spec.ts",
+      "healed": false,
+      "healAttempts": 0,
+      "flaky": false,
+      "durationMs": 17825,
+      "failure": null,
+      "batch": "2026-09-18T07-00-23-814Z.json"
+    },
+    {
+      "id": "AC-002-b",
+      "requirementId": "REQ-002",
+      "must": "A newly created entry starts as not-done",
+      "method": "e2e",
+      "status": "pass",
+      "spec": "tests/e2e/specs/AC-002-b.spec.ts",
+      "healed": false,
+      "healAttempts": 0,
+      "flaky": false,
+      "durationMs": 20557,
+      "failure": null,
+      "batch": "2026-09-18T07-00-23-814Z.json"
+    },
+    {
+      "id": "AC-003-a",
+      "requirementId": "REQ-003",
+      "must": "The list view shows every entry the user has created",
+      "method": "e2e",
+      "status": "pass",
+      "spec": "tests/e2e/specs/AC-003-a.spec.ts",
+      "healed": false,
+      "healAttempts": 0,
+      "flaky": false,
+      "durationMs": 17667,
+      "failure": null,
+      "batch": "2026-09-18T07-00-23-814Z.json"
+    },
+    {
+      "id": "AC-003-b",
+      "requirementId": "REQ-003",
+      "must": "The list persists and reappears unchanged after the user signs out and signs back in",
+      "method": "e2e",
+      "status": "pass",
+      "spec": "tests/e2e/specs/AC-003-b.spec.ts",
+      "healed": false,
+      "healAttempts": 0,
+      "flaky": false,
+      "durationMs": 29844,
+      "failure": null,
+      "batch": "2026-09-18T07-00-23-814Z.json"
+    },
+    {
+      "id": "AC-004-a",
+      "requirementId": "REQ-004",
+      "must": "Marking an entry done updates its displayed state to done",
+      "method": "e2e",
+      "status": "pass",
+      "spec": "tests/e2e/specs/AC-004-a.spec.ts",
+      "healed": false,
+      "healAttempts": 0,
+      "flaky": false,
+      "durationMs": 16014,
+      "failure": null,
+      "batch": "2026-09-18T07-00-23-814Z.json"
+    },
+    {
+      "id": "AC-004-b",
+      "requirementId": "REQ-004",
+      "must": "Marking a done entry not-done reverts its displayed state",
+      "method": "e2e",
+      "status": "pass",
+      "spec": "tests/e2e/specs/AC-004-b.spec.ts",
+      "healed": false,
+      "healAttempts": 0,
+      "flaky": false,
+      "durationMs": 16847,
+      "failure": null,
+      "batch": "2026-09-18T07-00-23-814Z.json"
+    },
+    {
+      "id": "AC-005-a",
+      "requirementId": "REQ-005",
+      "must": "Editing an entry's title and saving updates the title shown in the list",
+      "method": "e2e",
+      "status": "pass",
+      "spec": "tests/e2e/specs/AC-005-a.spec.ts",
+      "healed": false,
+      "healAttempts": 0,
+      "flaky": false,
+      "durationMs": 16543,
+      "failure": null,
+      "batch": "2026-09-18T07-00-23-814Z.json"
+    },
+    {
+      "id": "AC-006-a",
+      "requirementId": "REQ-006",
+      "must": "Deleting an entry removes it from the user's list",
+      "method": "e2e",
+      "status": "pass",
+      "spec": "tests/e2e/specs/AC-006-a.spec.ts",
+      "healed": false,
+      "healAttempts": 0,
+      "flaky": false,
+      "durationMs": 22324,
+      "failure": null,
+      "batch": "2026-09-18T07-00-23-814Z.json"
+    },
+    {
+      "id": "AC-006-b",
+      "requirementId": "REQ-006",
+      "must": "A deleted entry does not reappear after signing out and back in",
+      "method": "e2e",
+      "status": "pass",
+      "spec": "tests/e2e/specs/AC-006-b.spec.ts",
+      "healed": false,
+      "healAttempts": 0,
+      "flaky": false,
+      "durationMs": 39185,
+      "failure": null,
+      "batch": "2026-09-18T07-00-23-814Z.json"
+    }
+  ]
+}
