@@ -1,0 +1,29 @@
+{
+  "version": 3,
+  "permissions": [
+    {
+      "resource": "todo-entries",
+      "component": "todo-api",
+      "description": "A user's personal to-do entries",
+      "actions": [
+        { "handle": "read", "description": "The caller's own to-do entries" },
+        { "handle": "create", "description": "Add a new to-do entry" },
+        { "handle": "update", "description": "Edit or complete/uncomplete the caller's own entry" },
+        { "handle": "delete", "description": "Delete the caller's own entry" }
+      ]
+    }
+  ],
+  "groups": [],
+  "roles": [
+    {
+      "name": "User",
+      "description": "Signed-in individual who manages their own to-do entries.",
+      "stories": [1, 2, 3, 4, 5, 6],
+      "grants": ["todo-entries:read", "todo-entries:create", "todo-entries:update", "todo-entries:delete"],
+      "assignTo": ["Users"]
+    }
+  ],
+  "testUsers": [
+    { "username": "test-user", "roles": ["User"] }
+  ]
+}

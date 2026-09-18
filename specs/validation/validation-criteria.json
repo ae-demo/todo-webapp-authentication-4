@@ -1,0 +1,58 @@
+{
+  "requirements": [
+    {
+      "id": "REQ-001",
+      "statement": "A user signs in with their own identity so their to-do list is private to them",
+      "stories": [1],
+      "criteria": [
+        { "id": "AC-001-a", "must": "An unauthenticated visitor is directed to sign in before reaching the to-do list", "method": "e2e" },
+        { "id": "AC-001-b", "must": "After signing in, the user lands on their own to-do list", "method": "e2e" },
+        { "id": "AC-001-c", "must": "One user's signed-in session never shows another user's entries", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-002",
+      "statement": "A signed-in user can add a new to-do entry with a title",
+      "stories": [2],
+      "criteria": [
+        { "id": "AC-002-a", "must": "Submitting a title creates a new entry visible in the user's list", "method": "e2e" },
+        { "id": "AC-002-b", "must": "A newly created entry starts as not-done", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-003",
+      "statement": "A signed-in user can see the list of all their to-do entries",
+      "stories": [3],
+      "criteria": [
+        { "id": "AC-003-a", "must": "The list view shows every entry the user has created", "method": "e2e" },
+        { "id": "AC-003-b", "must": "The list persists and reappears unchanged after the user signs out and signs back in", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-004",
+      "statement": "A signed-in user can mark an entry as done or not-done",
+      "stories": [4],
+      "criteria": [
+        { "id": "AC-004-a", "must": "Marking an entry done updates its displayed state to done", "method": "e2e" },
+        { "id": "AC-004-b", "must": "Marking a done entry not-done reverts its displayed state", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-005",
+      "statement": "A signed-in user can edit the title of an existing entry",
+      "stories": [5],
+      "criteria": [
+        { "id": "AC-005-a", "must": "Editing an entry's title and saving updates the title shown in the list", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-006",
+      "statement": "A signed-in user can delete an entry",
+      "stories": [6],
+      "criteria": [
+        { "id": "AC-006-a", "must": "Deleting an entry removes it from the user's list", "method": "e2e" },
+        { "id": "AC-006-b", "must": "A deleted entry does not reappear after signing out and back in", "method": "e2e" }
+      ]
+    }
+  ]
+}

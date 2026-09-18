@@ -1,0 +1,17 @@
+{
+  "name": "todo-api",
+  "type": "service",
+  "version": "0.1.0",
+  "language": "Ballerina",
+  "buildpack": "docker",
+  "appPath": "todo-api",
+  "entrypoint": "deployment/service",
+  "exposure": "intranet",
+  "dependencies": [
+    { "kind": "platform-resource", "name": "todo-db", "resourceType": "postgres-cnpg" },
+    { "kind": "platform-resource", "name": "user-auth", "resourceType": "thunder-app" }
+  ],
+  "description": "Owns and persists each signed-in user's personal to-do entries in Postgres, scoped to the caller via the gateway's signed assertion. Exposes CRUD on /me/todo-entries only — no sharing, no cross-user visibility, no notifications.",
+  "stories": [2, 3, 4, 5, 6],
+  "skillsPinned": ["openapi-conventions", "ballerina", "thunder-authentication", "api-management"]
+}

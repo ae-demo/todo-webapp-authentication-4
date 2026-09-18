@@ -1,0 +1,165 @@
+openapi: 3.0.3
+info:
+  title: Todo API
+  version: 0.1.0
+  description: Manages a signed-in user's personal to-do entries.
+servers:
+  - url: /
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: /oauth2/authorize
+          tokenUrl: /oauth2/token
+          scopes:
+            todo-entries:read: The caller's own to-do entries
+            todo-entries:create: Add a new to-do entry
+            todo-entries:update: Edit or complete/uncomplete the caller's own entry
+            todo-entries:delete: Delete the caller's own entry
+  schemas:
+    TodoEntry:
+      type: object
+      required: [id, title, done, createdAt, updatedAt]
+      properties:
+        id: { type: string, description: entry id }
+        title: { type: string, description: entry title }
+        done: { type: boolean, description: completion state }
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time }
+    TodoEntryCreate:
+      type: object
+      required: [title]
+      properties:
+        title: { type: string, description: entry title }
+    TodoEntryUpdate:
+      type: object
+      properties:
+        title: { type: string, description: new title }
+        done: { type: boolean, description: new completion state }
+    Error:
+      type: object
+      required: [code, message]
+      properties:
+        code: { type: integer, description: HTTP or application error code }
+        message: { type: string, description: short human-readable label }
+        description: { type: string, description: detailed explanation }
+        moreInfo: { type: string, description: URI to documentation }
+security:
+  - oauth2: []
+paths:
+  /me/todo-entries:
+    get:
+      operationId: listMyTodoEntries
+      summary: The caller's to-do entries
+      security:
+        - oauth2: [todo-entries:read]
+      parameters:
+        - name: limit
+          in: query
+          schema: { type: integer, default: 20, maximum: 100 }
+        - name: offset
+          in: query
+          schema: { type: integer, default: 0 }
+      responses:
+        '200':
+          description: A page of the caller's to-do entries
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [count, data]
+                properties:
+                  count: { type: integer, description: total matching items }
+                  next: { type: string, nullable: true, description: relative URI of the next page }
+                  previous: { type: string, nullable: true, description: relative URI of the previous page }
+                  data:
+                    type: array
+                    items: { $ref: '#/components/schemas/TodoEntry' }
+        '401':
+          description: Not signed in
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+    post:
+      operationId: createTodoEntry
+      summary: Add a new to-do entry
+      security:
+        - oauth2: [todo-entries:create]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/TodoEntryCreate' }
+      responses:
+        '201':
+          description: The created entry
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/TodoEntry' }
+        '400':
+          description: Invalid entry
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '401':
+          description: Not signed in
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+  /me/todo-entries/{entryId}:
+    parameters:
+      - name: entryId
+        in: path
+        required: true
+        schema: { type: string }
+    patch:
+      operationId: updateTodoEntry
+      summary: Edit or complete/uncomplete the caller's own entry
+      security:
+        - oauth2: [todo-entries:update]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/TodoEntryUpdate' }
+      responses:
+        '200':
+          description: The updated entry
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/TodoEntry' }
+        '400':
+          description: Invalid update
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '401':
+          description: Not signed in
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '404':
+          description: No such entry for this caller
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+    delete:
+      operationId: deleteTodoEntry
+      summary: Delete the caller's own entry
+      security:
+        - oauth2: [todo-entries:delete]
+      responses:
+        '204':
+          description: Deleted
+        '401':
+          description: Not signed in
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '404':
+          description: No such entry for this caller
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }

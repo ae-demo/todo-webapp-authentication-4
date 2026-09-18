@@ -28,7 +28,7 @@ A web application where each person signs in with their own identity and keeps a
 - **Scope of visibility**: personal only — each user's entries are private to that user; there is no sharing or collaboration between users.
 - **Persistence**: entries are stored in a database so they survive across sessions and devices.
 - **Editing and deletion are supported** — a usable personal to-do list needs to let a user correct a title and remove an entry, not just add and complete ones.
-- **No external third-party services** are required beyond the platform's own sign-in — the product has no payments, email, or other integrations to make it work *assumed*.
+- **No external third-party services** are required beyond the platform's own sign-in — the product has no payments, email, or other integrations to make it work .
 
 ## Out of Scope
 
